@@ -31,7 +31,21 @@
                             $state = ($_POST['state']);
                             $zip = ($_POST['zip']);
 
-                           $this->conn->query("insert into records (email,pass,address,city,state,zip) values ($email, $password, $address, $city, $state, $zip )");
+                            $query = "insert into records (email,pass,address,city,state,zip) values ('$email', '$password', '$address', '$city', '$state', '$zip' )";
+                        
+
+                          if($sql = $this->conn->query($query)){
+                            echo "<script>alert('success')</script>";
+                            echo "<script>window.location href = 'index.php'</script>";
+                          }
+                          else{
+                            echo "<script>alert('failed')</script>";
+                            echo "<script>window.location href = 'index.php'</script>";
+                          }
+                }
+                else{
+                    echo "<script>alert('empty')</script>";
+                    echo "<script>window.location href = 'index.php'</script>";
                 }
 
                 }

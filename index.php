@@ -38,29 +38,29 @@
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="email">Email</label>
-      <input type="email" class="form-control" id="email" placeholder="Email">
+      <input type="email" class="form-control" name="email" placeholder="Email">
     </div>
 
     <div class="form-group col-md-6">
       <label for="password">Password</label>
-      <input type="password" class="form-control" id="password" placeholder="Password">
+      <input type="password" class="form-control" name="password" placeholder="Password">
     </div>
   </div>
 
   <div class="form-group">
     <label for="address">Address</label>
-    <input type="text" class="form-control" id="address" placeholder="1234 Main St">
+    <input type="text" class="form-control" name="address" placeholder="1234 Main St">
   </div>
  
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="city">City</label>
-      <input type="text" class="form-control" id="city">
+      <input type="text" class="form-control" name="city">
     </div>
 
     <div class="form-group col-md-4">
       <label for="state">State</label>
-      <select id="state" class="form-control">
+      <select name="state" class="form-control">
         <option selected>dhaka</option>
         <option>rajshahi</option>
       </select>
@@ -68,7 +68,7 @@
     </div>
     <div class="form-group col-md-2">
       <label for="zip">Zip</label>
-      <input type="text" class="form-control" id="zip">
+      <input type="text" class="form-control" name="zip">
     </div>
   </div>
 

@@ -88,14 +88,13 @@
         }
 
         public function edit($data){
-           $query = "update records set email ='$data[email]',pass='$data[password]',address ='$data[address]',city ='$data[city]',state ='$data[state]'
-           zip ='$data[zip]' where id = '$data[id]'";
+           $query = "UPDATE records SET email ='$data[email]',pass='$data[password]', address ='$data[address]',city ='$data[city]', state ='$data[state]', zip ='$data[zip]' WHERE id = '$data[id]'";
            
-            if($sql = $this->conn->query($query)){
+           if($sql = $this->conn->query($query)){
                 return true;
                 
         }
-        else {return false;}
+        else {echo false;}
     }
     }
 

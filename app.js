@@ -12,3 +12,7 @@
 
         
     }
+
+    function go(){
+        setTimeout("location.href = 'records.php';",3000);
+    }

@@ -25,9 +25,7 @@
       <li class="nav-item">
         <a class="nav-link" href="records.php">Records</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="read.php">Read</a>
-      </li>
+     
       
     </ul>
     

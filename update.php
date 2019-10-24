@@ -36,12 +36,8 @@
       <li class="nav-item">
         <a class="nav-link" href="records.php">Records</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="read.php">Read</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="update.php">Update</a>
-      </li>
+      
+
       
     </ul>
     
@@ -84,9 +80,9 @@ echo "<div id='demo'></div>";
 
                     $edit = $model->edit($data);
 
-                    if($edit){
-                        //echo "<script>showAlert('success', 'update success')</script>";
-                        header("Location: records.php");
+                    if($edit === true){
+                        echo "<script>showAlert('success', 'update success')</script>";
+                        echo "<script>go()</script>";
                     }
 
         }

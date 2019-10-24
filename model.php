@@ -1,3 +1,5 @@
+
+
 <?php
 
     class Model {
@@ -35,17 +37,17 @@
                         
 
                           if($sql = $this->conn->query($query)){
-                            echo "<script>alert('success')</script>";
-                            echo "<script>window.location href = 'index.php'</script>";
+                            echo "<script>showAlert('success', 'success')</script>";
+                            //echo "<script>window.location.href = 'index.php'</script>";
                           }
                           else{
                             echo "<script>alert('failed')</script>";
-                            echo "<script>window.location href = 'index.php'</script>";
+                            echo "<script>window.location.href = 'index.php'</script>";
                           }
                 }
                 else{
-                    echo "<script>alert('empty')</script>";
-                    echo "<script>window.location href = 'index.php'</script>";
+                    echo "<script>showAlert('danger', 'empty');</script>";
+                    //echo "<script>window.location.href = 'index.php'</script>";
                 }
 
                 }
@@ -63,7 +65,41 @@
             }
             return $data;
         }
+
+        public function delete($id){
+            $query = "DELETE FROM records WHERE id = '$id'";
+            if($sql = $this->conn->query($query)){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+
+        public function fetch_single($id){
+            $data = null;
+            $query = "select * from records where id = '$id'";
+            if($sql = $this->conn->query($query)){
+                while($row = $sql->fetch_assoc()){
+                    $data = $row;
+                }
+            }
+            return $data;
+        }
+
+        public function edit($data){
+           $query = "update records set email ='$data[email]',pass='$data[password]',address ='$data[address]',city ='$data[city]',state ='$data[state]'
+           zip ='$data[zip]' where id = '$data[id]'";
+           
+            if($sql = $this->conn->query($query)){
+                return true;
+                
+        }
+        else {return false;}
+    }
     }
 
 
 ?>
+
+<script src="app.js"></script>

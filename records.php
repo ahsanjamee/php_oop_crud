@@ -38,7 +38,9 @@
         <div class="col-md-4 mx-auto">
             <hr style="height : 1px; color: black; background-color : black;">
         </div>
-
+        <?php
+echo "<div id='demo'></div>";
+?>
     <table class="table mt-5">
   <thead>
     <tr>
@@ -80,6 +82,9 @@
     </tr>
     <?php
             }
+        }
+        else{
+          echo"No record found";
         }
     ?>
   </tbody>

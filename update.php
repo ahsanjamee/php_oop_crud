@@ -30,7 +30,7 @@
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item active">
+      <li class="nav-item ">
         <a class="nav-link" href="index.php">Home </a>
       </li>
       <li class="nav-item">
@@ -39,7 +39,7 @@
       <li class="nav-item">
         <a class="nav-link" href="read.php">Read</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link" href="update.php">Update</a>
       </li>
       
@@ -64,35 +64,69 @@ echo "<div id='demo'></div>";
 <?php
     include 'model.php';
     $model = new Model();
-    $insert = $model->insert();
+    $id = $_REQUEST['id'];
+    $update = $model->fetch_single($id);
+
+    if(isset($_POST['update'])){
+        if(isset($_POST['email']) && isset($_POST['password']) && isset($_POST['address']) && isset($_POST['city']) && isset($_POST['state']) &&
+        isset($_POST['zip'])){
+
+            if(!empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['address']) && !empty($_POST['city']) && !empty($_POST['state']) &&
+            !empty($_POST['zip'])){
+
+                    $data['id'] = $id;
+                    $data['email'] = $_POST['email'];
+                    $data['password']  = $_POST['password'];
+                    $data['address']  = ($_POST['address']);
+                    $data['city']  = $_POST['city'];
+                    $data['state']  = ($_POST['state']);
+                    $data['zip']  = ($_POST['zip']);
+
+                    $edit = $model->edit($data);
+
+                    if($edit){
+                        //echo "<script>showAlert('success', 'update success')</script>";
+                        header("Location: records.php");
+                    }
+
+        }
+        else{
+            echo "<script>showAlert('danger', 'empty');</script>";
+            //echo "<script>window.location.href = 'index.php'</script>";
+            header("Location: update.php?id = $id");
+        }
+
+        }
+    }
+
 ?>
     <form action="" method="post" class="mt-5" >
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="email">Email</label>
-      <input type="email" class="form-control" name="email" placeholder="Email">
+      <input type="email" class="form-control" name="email" value="<?php echo $update['email']?>">
     </div>
 
     <div class="form-group col-md-6">
       <label for="password">Password</label>
-      <input type="password" class="form-control" name="password" placeholder="Password">
+      <input type="password" class="form-control" name="password" value="<?php echo $update['pass']?>">
     </div>
   </div>
 
   <div class="form-group">
     <label for="address">Address</label>
-    <input type="text" class="form-control" name="address" placeholder="1234 Main St">
+    <input type="text" class="form-control" name="address" value="<?php echo $update['address']?>">
   </div>
  
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="city">City</label>
-      <input type="text" class="form-control" name="city">
+      <input type="text" class="form-control" name="city" value="<?php echo $update['city']?>">
     </div>
 
     <div class="form-group col-md-4">
       <label for="state">State</label>
-      <select name="state" class="form-control">
+      <select name="state" class="form-control" value="<?php echo $update['state']?>">
         <option selected>dhaka</option>
         <option>rajshahi</option>
       </select>
@@ -100,13 +134,13 @@ echo "<div id='demo'></div>";
     </div>
     <div class="form-group col-md-2">
       <label for="zip">Zip</label>
-      <input type="text" class="form-control" name="zip">
+      <input type="text" class="form-control" name="zip" value="<?php echo $update['zip']?>">
     </div>
   </div>
 
   
 
-  <p style="text-align : center;"><button type="submit" name="submit" class="btn btn-primary ">Sign up</button></p>
+  <p style="text-align : center;"><button type="submit" name="update" class="btn btn-primary ">Update</button></p>
 </form>
             </div>
         </div>
